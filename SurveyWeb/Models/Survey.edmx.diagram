@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ee70d96643f041bfbd3550e41d7b5aa1" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="SurveyModel.SAUser" Width="1.5" PointX="3.375" PointY="8.875" />
+        <EntityTypeShape EntityType="SurveyModel.SCAnswerDetail" Width="1.5" PointX="7.25" PointY="7.875" />
+        <EntityTypeShape EntityType="SurveyModel.SCAnswer" Width="1.5" PointX="5.25" PointY="4.625" />
+        <EntityTypeShape EntityType="SurveyModel.SCUser" Width="1.5" PointX="3.25" PointY="7" />
+        <EntityTypeShape EntityType="SurveyModel.Study" Width="1.5" PointX="5.375" PointY="7.875" />
+        <EntityTypeShape EntityType="SurveyModel.StudyQuestion" Width="1.5" PointX="7.75" PointY="4.25" />
+        <EntityTypeShape EntityType="SurveyModel.StudySurvey" Width="1.5" PointX="9.625" PointY="5" />
+        <EntityTypeShape EntityType="SurveyModel.StudyType" Width="1.5" PointX="3.25" PointY="4.75" />
+        <AssociationConnector Association="SurveyModel.FK_Studies_ToTable" />
+        <AssociationConnector Association="SurveyModel.FK_SCAnswerDetails_ToTable" />
+        <AssociationConnector Association="SurveyModel.FK_SCAnswers_ToTable" />
+        <AssociationConnector Association="SurveyModel.FK_SCAnswers_ToTable_1" />
+        <AssociationConnector Association="SurveyModel.FK_SCAnswers_ToTable_2" />
+        <AssociationConnector Association="SurveyModel.FK_StudyQuestions_ToTable" />
+        <AssociationConnector Association="SurveyModel.FK_StudyQuestions_ToTable_1" />
+        <EntityTypeShape EntityType="SurveyModel.CustomSurvey" Width="1.5" PointX="9.5" PointY="7.5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

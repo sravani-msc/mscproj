@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SurveyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="SAUsers">
+    <Key>
+      <PropertyRef Name="SAEmailid" />
+    </Key>
+    <Property Name="SAEmailid" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SAPassword" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SCAnswerDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sno" Type="int" />
+    <Property Name="a1" Type="int" />
+    <Property Name="a2" Type="int" />
+    <Property Name="a3" Type="int" />
+    <Property Name="a4" Type="int" />
+    <Property Name="a5" Type="int" />
+    <Property Name="a6" Type="int" />
+    <Property Name="a7" Type="int" />
+    <Property Name="a8" Type="int" />
+    <Property Name="a9" Type="int" />
+  </EntityType>
+  <EntityType Name="SCAnswers">
+    <Key>
+      <PropertyRef Name="sno" />
+    </Key>
+    <Property Name="SCEmailid" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Scode" Type="int" />
+    <Property Name="SurveyDate" Type="date" />
+    <Property Name="sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SCUsers">
+    <Key>
+      <PropertyRef Name="SCEmailid" />
+    </Key>
+    <Property Name="SCEmailid" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SCPassword" Type="varchar" MaxLength="100" />
+    <Property Name="SCode" Type="int" />
+  </EntityType>
+  <EntityType Name="Studies">
+    <Key>
+      <PropertyRef Name="SCode" />
+    </Key>
+    <Property Name="SCode" Type="int" Nullable="false" />
+    <Property Name="StudyName" Type="varchar" MaxLength="50" />
+    <Property Name="NumStudents" Type="int" />
+    <Property Name="SchoolName" Type="varchar" MaxLength="50" />
+    <Property Name="StudyType" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="StudyQuestions">
+    <Key>
+      <PropertyRef Name="Scode" />
+    </Key>
+    <Property Name="Scode" Type="int" Nullable="false" />
+    <Property Name="q1" Type="varchar" MaxLength="50" />
+    <Property Name="q2" Type="varchar" MaxLength="50" />
+    <Property Name="q3" Type="varchar" MaxLength="50" />
+    <Property Name="q4" Type="varchar" MaxLength="50" />
+    <Property Name="q5" Type="varchar" MaxLength="50" />
+    <Property Name="q6" Type="varchar" MaxLength="50" />
+    <Property Name="q7" Type="varchar" MaxLength="50" />
+    <Property Name="q8" Type="varchar" MaxLength="50" />
+    <Property Name="q9" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_StudyQuestions_ToTable">
+    <End Role="Studies" Type="Self.Studies" Multiplicity="1" />
+    <End Role="StudyQuestions" Type="Self.StudyQuestions" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Studies">
+        <PropertyRef Name="SCode" />
+      </Principal>
+      <Dependent Role="StudyQuestions">
+        <PropertyRef Name="Scode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SurveyModelStoreContainer">
+    <EntitySet Name="SAUsers" EntityType="Self.SAUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCAnswerDetails" EntityType="Self.SCAnswerDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCAnswers" EntityType="Self.SCAnswers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCUsers" EntityType="Self.SCUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Studies" EntityType="Self.Studies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudyQuestions" EntityType="Self.StudyQuestions" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_StudyQuestions_ToTable" Association="Self.FK_StudyQuestions_ToTable">
+      <End Role="Studies" EntitySet="Studies" />
+      <End Role="StudyQuestions" EntitySet="StudyQuestions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

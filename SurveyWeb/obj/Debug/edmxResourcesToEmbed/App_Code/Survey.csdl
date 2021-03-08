@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SurveyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="SAUser">
+    <Key>
+      <PropertyRef Name="SAEmailid" />
+    </Key>
+    <Property Name="SAEmailid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SAPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SCAnswerDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sno" Type="Int32" />
+    <Property Name="a1" Type="Int32" />
+    <Property Name="a2" Type="Int32" />
+    <Property Name="a3" Type="Int32" />
+    <Property Name="a4" Type="Int32" />
+    <Property Name="a5" Type="Int32" />
+    <Property Name="a6" Type="Int32" />
+    <Property Name="a7" Type="Int32" />
+    <Property Name="a8" Type="Int32" />
+    <Property Name="a9" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SCAnswer">
+    <Key>
+      <PropertyRef Name="sno" />
+    </Key>
+    <Property Name="SCEmailid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Scode" Type="Int32" />
+    <Property Name="SurveyDate" Type="DateTime" Precision="0" />
+    <Property Name="sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="SCUser">
+    <Key>
+      <PropertyRef Name="SCEmailid" />
+    </Key>
+    <Property Name="SCEmailid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SCPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SCode" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Study">
+    <Key>
+      <PropertyRef Name="SCode" />
+    </Key>
+    <Property Name="SCode" Type="Int32" Nullable="false" />
+    <Property Name="StudyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NumStudents" Type="Int32" />
+    <Property Name="SchoolName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StudyType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="StudyQuestion" Relationship="Self.FK_StudyQuestions_ToTable" FromRole="Studies" ToRole="StudyQuestions" />
+  </EntityType>
+  <EntityType Name="StudyQuestion">
+    <Key>
+      <PropertyRef Name="Scode" />
+    </Key>
+    <Property Name="Scode" Type="Int32" Nullable="false" />
+    <Property Name="q1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="q2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="q3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="q4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="q5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="q6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="q7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="q8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="q9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Study" Relationship="Self.FK_StudyQuestions_ToTable" FromRole="StudyQuestions" ToRole="Studies" />
+  </EntityType>
+  <Association Name="FK_StudyQuestions_ToTable">
+    <End Role="Studies" Type="Self.Study" Multiplicity="1" />
+    <End Role="StudyQuestions" Type="Self.StudyQuestion" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Studies">
+        <PropertyRef Name="SCode" />
+      </Principal>
+      <Dependent Role="StudyQuestions">
+        <PropertyRef Name="Scode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SurveyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="SAUsers" EntityType="Self.SAUser" />
+    <EntitySet Name="SCAnswerDetails" EntityType="Self.SCAnswerDetail" />
+    <EntitySet Name="SCAnswers" EntityType="Self.SCAnswer" />
+    <EntitySet Name="SCUsers" EntityType="Self.SCUser" />
+    <EntitySet Name="Studies" EntityType="Self.Study" />
+    <EntitySet Name="StudyQuestions" EntityType="Self.StudyQuestion" />
+    <AssociationSet Name="FK_StudyQuestions_ToTable" Association="Self.FK_StudyQuestions_ToTable">
+      <End Role="Studies" EntitySet="Studies" />
+      <End Role="StudyQuestions" EntitySet="StudyQuestions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

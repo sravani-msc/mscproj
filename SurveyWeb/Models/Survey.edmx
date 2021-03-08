@@ -1,0 +1,629 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SurveyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CustomSurvey">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adminid" Type="varchar" MaxLength="20" />
+          <Property Name="studyid" Type="int" />
+          <Property Name="q1" Type="varchar" MaxLength="20" />
+          <Property Name="q2" Type="varchar" MaxLength="20" />
+          <Property Name="q3" Type="varchar" MaxLength="20" />
+          <Property Name="q4" Type="varchar" MaxLength="20" />
+          <Property Name="q5" Type="varchar" MaxLength="20" />
+          <Property Name="q6" Type="varchar" MaxLength="20" />
+          <Property Name="q7" Type="varchar" MaxLength="20" />
+          <Property Name="q8" Type="varchar" MaxLength="20" />
+          <Property Name="q9" Type="varchar" MaxLength="20" />
+          <Property Name="q10" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="SAUsers">
+          <Key>
+            <PropertyRef Name="SAEmailid" />
+          </Key>
+          <Property Name="SAEmailid" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SAPassword" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SCAnswerDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sno" Type="int" />
+          <Property Name="a1" Type="varchar" MaxLength="50" />
+          <Property Name="a2" Type="varchar" MaxLength="50" />
+          <Property Name="a3" Type="varchar" MaxLength="50" />
+          <Property Name="a4" Type="varchar" MaxLength="50" />
+          <Property Name="a5" Type="varchar" MaxLength="50" />
+          <Property Name="a6" Type="varchar" MaxLength="50" />
+          <Property Name="a7" Type="varchar" MaxLength="100" />
+          <Property Name="a8" Type="varchar" MaxLength="50" />
+          <Property Name="a9" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SCAnswers">
+          <Key>
+            <PropertyRef Name="sno" />
+          </Key>
+          <Property Name="SCEmailid" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Scode" Type="int" />
+          <Property Name="SurveyDate" Type="date" />
+          <Property Name="sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studytype" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SCUsers">
+          <Key>
+            <PropertyRef Name="SCEmailid" />
+          </Key>
+          <Property Name="SCEmailid" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SCPassword" Type="varchar" MaxLength="100" />
+          <Property Name="SCode" Type="int" />
+        </EntityType>
+        <EntityType Name="Studies">
+          <Key>
+            <PropertyRef Name="SCode" />
+          </Key>
+          <Property Name="SCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudyName" Type="varchar" MaxLength="50" />
+          <Property Name="NumStudents" Type="int" />
+          <Property Name="SchoolName" Type="varchar" MaxLength="50" />
+          <Property Name="StudyType" Type="varchar" MaxLength="50" />
+          <Property Name="CTEQ" Type="varchar" MaxLength="10" />
+          <Property Name="CTUQ" Type="varchar" MaxLength="10" />
+          <Property Name="CTHQ" Type="varchar" MaxLength="10" />
+          <Property Name="Other" Type="varchar" MaxLength="10" />
+          <Property Name="saemailid" Type="varchar" MaxLength="100" />
+          <Property Name="ConsentForm" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="StudyQuestions">
+          <Key>
+            <PropertyRef Name="Scode" />
+            <PropertyRef Name="StudyType" />
+          </Key>
+          <Property Name="Scode" Type="int" Nullable="false" />
+          <Property Name="q1" Type="varchar" MaxLength="50" />
+          <Property Name="q2" Type="varchar" MaxLength="50" />
+          <Property Name="q3" Type="varchar" MaxLength="50" />
+          <Property Name="q4" Type="varchar" MaxLength="50" />
+          <Property Name="q5" Type="varchar" MaxLength="50" />
+          <Property Name="q6" Type="varchar" MaxLength="50" />
+          <Property Name="q7" Type="varchar" MaxLength="50" />
+          <Property Name="q8" Type="varchar" MaxLength="50" />
+          <Property Name="q9" Type="varchar" MaxLength="50" />
+          <Property Name="StudyType" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudySurveys">
+          <Key>
+            <PropertyRef Name="SCode" />
+            <PropertyRef Name="StudyType" />
+          </Key>
+          <Property Name="SSid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SCode" Type="int" Nullable="false" />
+          <Property Name="StudyType" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudyTypes">
+          <Key>
+            <PropertyRef Name="studytype" />
+          </Key>
+          <Property Name="studytype" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_SCAnswerDetails_ToTable">
+          <End Role="SCAnswers" Type="Self.SCAnswers" Multiplicity="0..1" />
+          <End Role="SCAnswerDetails" Type="Self.SCAnswerDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCAnswers">
+              <PropertyRef Name="sno" />
+            </Principal>
+            <Dependent Role="SCAnswerDetails">
+              <PropertyRef Name="sno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SCAnswers_ToTable">
+          <End Role="StudyTypes" Type="Self.StudyTypes" Multiplicity="0..1" />
+          <End Role="SCAnswers" Type="Self.SCAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudyTypes">
+              <PropertyRef Name="studytype" />
+            </Principal>
+            <Dependent Role="SCAnswers">
+              <PropertyRef Name="studytype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SCAnswers_ToTable_1">
+          <End Role="Studies" Type="Self.Studies" Multiplicity="0..1" />
+          <End Role="SCAnswers" Type="Self.SCAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Studies">
+              <PropertyRef Name="SCode" />
+            </Principal>
+            <Dependent Role="SCAnswers">
+              <PropertyRef Name="Scode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SCAnswers_ToTable_2">
+          <End Role="SCUsers" Type="Self.SCUsers" Multiplicity="1" />
+          <End Role="SCAnswers" Type="Self.SCAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCUsers">
+              <PropertyRef Name="SCEmailid" />
+            </Principal>
+            <Dependent Role="SCAnswers">
+              <PropertyRef Name="SCEmailid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Studies_ToTable">
+          <End Role="SAUsers" Type="Self.SAUsers" Multiplicity="0..1" />
+          <End Role="Studies" Type="Self.Studies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SAUsers">
+              <PropertyRef Name="SAEmailid" />
+            </Principal>
+            <Dependent Role="Studies">
+              <PropertyRef Name="saemailid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyQuestions_ToTable">
+          <End Role="Studies" Type="Self.Studies" Multiplicity="1" />
+          <End Role="StudyQuestions" Type="Self.StudyQuestions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Studies">
+              <PropertyRef Name="SCode" />
+            </Principal>
+            <Dependent Role="StudyQuestions">
+              <PropertyRef Name="Scode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyQuestions_ToTable_1">
+          <End Role="StudyTypes" Type="Self.StudyTypes" Multiplicity="1" />
+          <End Role="StudyQuestions" Type="Self.StudyQuestions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudyTypes">
+              <PropertyRef Name="studytype" />
+            </Principal>
+            <Dependent Role="StudyQuestions">
+              <PropertyRef Name="StudyType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SurveyModelStoreContainer">
+          <EntitySet Name="CustomSurvey" EntityType="Self.CustomSurvey" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SAUsers" EntityType="Self.SAUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SCAnswerDetails" EntityType="Self.SCAnswerDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SCAnswers" EntityType="Self.SCAnswers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SCUsers" EntityType="Self.SCUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Studies" EntityType="Self.Studies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudyQuestions" EntityType="Self.StudyQuestions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudySurveys" EntityType="Self.StudySurveys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudyTypes" EntityType="Self.StudyTypes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_SCAnswerDetails_ToTable" Association="Self.FK_SCAnswerDetails_ToTable">
+            <End Role="SCAnswers" EntitySet="SCAnswers" />
+            <End Role="SCAnswerDetails" EntitySet="SCAnswerDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SCAnswers_ToTable" Association="Self.FK_SCAnswers_ToTable">
+            <End Role="StudyTypes" EntitySet="StudyTypes" />
+            <End Role="SCAnswers" EntitySet="SCAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SCAnswers_ToTable_1" Association="Self.FK_SCAnswers_ToTable_1">
+            <End Role="Studies" EntitySet="Studies" />
+            <End Role="SCAnswers" EntitySet="SCAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SCAnswers_ToTable_2" Association="Self.FK_SCAnswers_ToTable_2">
+            <End Role="SCUsers" EntitySet="SCUsers" />
+            <End Role="SCAnswers" EntitySet="SCAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Studies_ToTable" Association="Self.FK_Studies_ToTable">
+            <End Role="SAUsers" EntitySet="SAUsers" />
+            <End Role="Studies" EntitySet="Studies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyQuestions_ToTable" Association="Self.FK_StudyQuestions_ToTable">
+            <End Role="Studies" EntitySet="Studies" />
+            <End Role="StudyQuestions" EntitySet="StudyQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyQuestions_ToTable_1" Association="Self.FK_StudyQuestions_ToTable_1">
+            <End Role="StudyTypes" EntitySet="StudyTypes" />
+            <End Role="StudyQuestions" EntitySet="StudyQuestions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SurveyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SurveyEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SAUsers" EntityType="SurveyModel.SAUser" />
+          <EntitySet Name="SCAnswerDetails" EntityType="SurveyModel.SCAnswerDetail" />
+          <EntitySet Name="SCAnswers" EntityType="SurveyModel.SCAnswer" />
+          <EntitySet Name="SCUsers" EntityType="SurveyModel.SCUser" />
+          <EntitySet Name="Studies" EntityType="SurveyModel.Study" />
+          <EntitySet Name="StudyQuestions" EntityType="SurveyModel.StudyQuestion" />
+          <EntitySet Name="StudySurveys" EntityType="SurveyModel.StudySurvey" />
+          <EntitySet Name="StudyTypes" EntityType="SurveyModel.StudyType" />
+          <AssociationSet Name="FK_Studies_ToTable" Association="SurveyModel.FK_Studies_ToTable">
+            <End Role="SAUser" EntitySet="SAUsers" />
+            <End Role="Study" EntitySet="Studies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SCAnswerDetails_ToTable" Association="SurveyModel.FK_SCAnswerDetails_ToTable">
+            <End Role="SCAnswer" EntitySet="SCAnswers" />
+            <End Role="SCAnswerDetail" EntitySet="SCAnswerDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SCAnswers_ToTable" Association="SurveyModel.FK_SCAnswers_ToTable">
+            <End Role="StudyType" EntitySet="StudyTypes" />
+            <End Role="SCAnswer" EntitySet="SCAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SCAnswers_ToTable_1" Association="SurveyModel.FK_SCAnswers_ToTable_1">
+            <End Role="Study" EntitySet="Studies" />
+            <End Role="SCAnswer" EntitySet="SCAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SCAnswers_ToTable_2" Association="SurveyModel.FK_SCAnswers_ToTable_2">
+            <End Role="SCUser" EntitySet="SCUsers" />
+            <End Role="SCAnswer" EntitySet="SCAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyQuestions_ToTable" Association="SurveyModel.FK_StudyQuestions_ToTable">
+            <End Role="Study" EntitySet="Studies" />
+            <End Role="StudyQuestion" EntitySet="StudyQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyQuestions_ToTable_1" Association="SurveyModel.FK_StudyQuestions_ToTable_1">
+            <End Role="StudyType" EntitySet="StudyTypes" />
+            <End Role="StudyQuestion" EntitySet="StudyQuestions" />
+          </AssociationSet>
+          <EntitySet Name="CustomSurveys" EntityType="SurveyModel.CustomSurvey" />
+        </EntityContainer>
+        <EntityType Name="SAUser">
+          <Key>
+            <PropertyRef Name="SAEmailid" />
+          </Key>
+          <Property Name="SAEmailid" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SAPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Studies" Relationship="SurveyModel.FK_Studies_ToTable" FromRole="SAUser" ToRole="Study" />
+        </EntityType>
+        <EntityType Name="SCAnswerDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sno" Type="Int32" />
+          <Property Name="a1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="a2" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="a3" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="a4" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="a5" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="a6" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="a7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="a8" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="a9" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="SCAnswer" Relationship="SurveyModel.FK_SCAnswerDetails_ToTable" FromRole="SCAnswerDetail" ToRole="SCAnswer" />
+        </EntityType>
+        <EntityType Name="SCAnswer">
+          <Key>
+            <PropertyRef Name="sno" />
+          </Key>
+          <Property Name="SCEmailid" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Scode" Type="Int32" />
+          <Property Name="SurveyDate" Type="DateTime" Precision="0" />
+          <Property Name="sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studytype" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SCAnswerDetails" Relationship="SurveyModel.FK_SCAnswerDetails_ToTable" FromRole="SCAnswer" ToRole="SCAnswerDetail" />
+          <NavigationProperty Name="StudyType1" Relationship="SurveyModel.FK_SCAnswers_ToTable" FromRole="SCAnswer" ToRole="StudyType" />
+          <NavigationProperty Name="Study" Relationship="SurveyModel.FK_SCAnswers_ToTable_1" FromRole="SCAnswer" ToRole="Study" />
+          <NavigationProperty Name="SCUser" Relationship="SurveyModel.FK_SCAnswers_ToTable_2" FromRole="SCAnswer" ToRole="SCUser" />
+        </EntityType>
+        <EntityType Name="SCUser">
+          <Key>
+            <PropertyRef Name="SCEmailid" />
+          </Key>
+          <Property Name="SCEmailid" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SCPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SCode" Type="Int32" />
+          <NavigationProperty Name="SCAnswers" Relationship="SurveyModel.FK_SCAnswers_ToTable_2" FromRole="SCUser" ToRole="SCAnswer" />
+        </EntityType>
+        <EntityType Name="Study">
+          <Key>
+            <PropertyRef Name="SCode" />
+          </Key>
+          <Property Name="SCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumStudents" Type="Int32" />
+          <Property Name="SchoolName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StudyType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CTEQ" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CTUQ" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CTHQ" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Other" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="saemailid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SAUser" Relationship="SurveyModel.FK_Studies_ToTable" FromRole="Study" ToRole="SAUser" />
+          <NavigationProperty Name="SCAnswers" Relationship="SurveyModel.FK_SCAnswers_ToTable_1" FromRole="Study" ToRole="SCAnswer" />
+          <NavigationProperty Name="StudyQuestions" Relationship="SurveyModel.FK_StudyQuestions_ToTable" FromRole="Study" ToRole="StudyQuestion" />
+          <Property Name="ConsentForm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="StudyQuestion">
+          <Key>
+            <PropertyRef Name="Scode" />
+            <PropertyRef Name="StudyType" />
+          </Key>
+          <Property Name="Scode" Type="Int32" Nullable="false" />
+          <Property Name="q1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="q2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="q3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="q4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="q5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="q6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="q7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="q8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="q9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StudyType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Study" Relationship="SurveyModel.FK_StudyQuestions_ToTable" FromRole="StudyQuestion" ToRole="Study" />
+          <NavigationProperty Name="StudyType1" Relationship="SurveyModel.FK_StudyQuestions_ToTable_1" FromRole="StudyQuestion" ToRole="StudyType" />
+        </EntityType>
+        <EntityType Name="StudySurvey">
+          <Key>
+            <PropertyRef Name="SCode" />
+            <PropertyRef Name="StudyType" />
+          </Key>
+          <Property Name="SSid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SCode" Type="Int32" Nullable="false" />
+          <Property Name="StudyType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="StudyType">
+          <Key>
+            <PropertyRef Name="studytype1" />
+          </Key>
+          <Property Name="studytype1" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SCAnswers" Relationship="SurveyModel.FK_SCAnswers_ToTable" FromRole="StudyType" ToRole="SCAnswer" />
+          <NavigationProperty Name="StudyQuestions" Relationship="SurveyModel.FK_StudyQuestions_ToTable_1" FromRole="StudyType" ToRole="StudyQuestion" />
+        </EntityType>
+        <Association Name="FK_Studies_ToTable">
+          <End Type="SurveyModel.SAUser" Role="SAUser" Multiplicity="0..1" />
+          <End Type="SurveyModel.Study" Role="Study" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SAUser">
+              <PropertyRef Name="SAEmailid" />
+            </Principal>
+            <Dependent Role="Study">
+              <PropertyRef Name="saemailid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SCAnswerDetails_ToTable">
+          <End Type="SurveyModel.SCAnswer" Role="SCAnswer" Multiplicity="0..1" />
+          <End Type="SurveyModel.SCAnswerDetail" Role="SCAnswerDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCAnswer">
+              <PropertyRef Name="sno" />
+            </Principal>
+            <Dependent Role="SCAnswerDetail">
+              <PropertyRef Name="sno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SCAnswers_ToTable">
+          <End Type="SurveyModel.StudyType" Role="StudyType" Multiplicity="0..1" />
+          <End Type="SurveyModel.SCAnswer" Role="SCAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudyType">
+              <PropertyRef Name="studytype1" />
+            </Principal>
+            <Dependent Role="SCAnswer">
+              <PropertyRef Name="studytype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SCAnswers_ToTable_1">
+          <End Type="SurveyModel.Study" Role="Study" Multiplicity="0..1" />
+          <End Type="SurveyModel.SCAnswer" Role="SCAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Study">
+              <PropertyRef Name="SCode" />
+            </Principal>
+            <Dependent Role="SCAnswer">
+              <PropertyRef Name="Scode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SCAnswers_ToTable_2">
+          <End Type="SurveyModel.SCUser" Role="SCUser" Multiplicity="1" />
+          <End Type="SurveyModel.SCAnswer" Role="SCAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCUser">
+              <PropertyRef Name="SCEmailid" />
+            </Principal>
+            <Dependent Role="SCAnswer">
+              <PropertyRef Name="SCEmailid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyQuestions_ToTable">
+          <End Type="SurveyModel.Study" Role="Study" Multiplicity="1" />
+          <End Type="SurveyModel.StudyQuestion" Role="StudyQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Study">
+              <PropertyRef Name="SCode" />
+            </Principal>
+            <Dependent Role="StudyQuestion">
+              <PropertyRef Name="Scode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyQuestions_ToTable_1">
+          <End Type="SurveyModel.StudyType" Role="StudyType" Multiplicity="1" />
+          <End Type="SurveyModel.StudyQuestion" Role="StudyQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudyType">
+              <PropertyRef Name="studytype1" />
+            </Principal>
+            <Dependent Role="StudyQuestion">
+              <PropertyRef Name="StudyType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CustomSurvey">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adminid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="studyid" Type="Int32" />
+          <Property Name="q1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="q2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="q3" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="q4" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="q5" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="q6" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="q7" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="q8" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="q9" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="q10" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SurveyModelStoreContainer" CdmEntityContainer="SurveyEntities1">
+          <EntitySetMapping Name="SAUsers">
+            <EntityTypeMapping TypeName="SurveyModel.SAUser">
+              <MappingFragment StoreEntitySet="SAUsers">
+                <ScalarProperty Name="SAPassword" ColumnName="SAPassword" />
+                <ScalarProperty Name="SAEmailid" ColumnName="SAEmailid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SCAnswerDetails">
+            <EntityTypeMapping TypeName="SurveyModel.SCAnswerDetail">
+              <MappingFragment StoreEntitySet="SCAnswerDetails">
+                <ScalarProperty Name="a9" ColumnName="a9" />
+                <ScalarProperty Name="a8" ColumnName="a8" />
+                <ScalarProperty Name="a7" ColumnName="a7" />
+                <ScalarProperty Name="a6" ColumnName="a6" />
+                <ScalarProperty Name="a5" ColumnName="a5" />
+                <ScalarProperty Name="a4" ColumnName="a4" />
+                <ScalarProperty Name="a3" ColumnName="a3" />
+                <ScalarProperty Name="a2" ColumnName="a2" />
+                <ScalarProperty Name="a1" ColumnName="a1" />
+                <ScalarProperty Name="sno" ColumnName="sno" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SCAnswers">
+            <EntityTypeMapping TypeName="SurveyModel.SCAnswer">
+              <MappingFragment StoreEntitySet="SCAnswers">
+                <ScalarProperty Name="studytype" ColumnName="studytype" />
+                <ScalarProperty Name="sno" ColumnName="sno" />
+                <ScalarProperty Name="SurveyDate" ColumnName="SurveyDate" />
+                <ScalarProperty Name="Scode" ColumnName="Scode" />
+                <ScalarProperty Name="SCEmailid" ColumnName="SCEmailid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SCUsers">
+            <EntityTypeMapping TypeName="SurveyModel.SCUser">
+              <MappingFragment StoreEntitySet="SCUsers">
+                <ScalarProperty Name="SCode" ColumnName="SCode" />
+                <ScalarProperty Name="SCPassword" ColumnName="SCPassword" />
+                <ScalarProperty Name="SCEmailid" ColumnName="SCEmailid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Studies">
+            <EntityTypeMapping TypeName="SurveyModel.Study">
+              <MappingFragment StoreEntitySet="Studies">
+                <ScalarProperty Name="ConsentForm" ColumnName="ConsentForm" />
+                <ScalarProperty Name="saemailid" ColumnName="saemailid" />
+                <ScalarProperty Name="Other" ColumnName="Other" />
+                <ScalarProperty Name="CTHQ" ColumnName="CTHQ" />
+                <ScalarProperty Name="CTUQ" ColumnName="CTUQ" />
+                <ScalarProperty Name="CTEQ" ColumnName="CTEQ" />
+                <ScalarProperty Name="StudyType" ColumnName="StudyType" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+                <ScalarProperty Name="NumStudents" ColumnName="NumStudents" />
+                <ScalarProperty Name="StudyName" ColumnName="StudyName" />
+                <ScalarProperty Name="SCode" ColumnName="SCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudyQuestions">
+            <EntityTypeMapping TypeName="SurveyModel.StudyQuestion">
+              <MappingFragment StoreEntitySet="StudyQuestions">
+                <ScalarProperty Name="StudyType" ColumnName="StudyType" />
+                <ScalarProperty Name="q9" ColumnName="q9" />
+                <ScalarProperty Name="q8" ColumnName="q8" />
+                <ScalarProperty Name="q7" ColumnName="q7" />
+                <ScalarProperty Name="q6" ColumnName="q6" />
+                <ScalarProperty Name="q5" ColumnName="q5" />
+                <ScalarProperty Name="q4" ColumnName="q4" />
+                <ScalarProperty Name="q3" ColumnName="q3" />
+                <ScalarProperty Name="q2" ColumnName="q2" />
+                <ScalarProperty Name="q1" ColumnName="q1" />
+                <ScalarProperty Name="Scode" ColumnName="Scode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudySurveys">
+            <EntityTypeMapping TypeName="SurveyModel.StudySurvey">
+              <MappingFragment StoreEntitySet="StudySurveys">
+                <ScalarProperty Name="StudyType" ColumnName="StudyType" />
+                <ScalarProperty Name="SCode" ColumnName="SCode" />
+                <ScalarProperty Name="SSid" ColumnName="SSid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudyTypes">
+            <EntityTypeMapping TypeName="SurveyModel.StudyType">
+              <MappingFragment StoreEntitySet="StudyTypes">
+                <ScalarProperty Name="studytype1" ColumnName="studytype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomSurveys">
+            <EntityTypeMapping TypeName="SurveyModel.CustomSurvey">
+              <MappingFragment StoreEntitySet="CustomSurvey">
+                <ScalarProperty Name="q10" ColumnName="q10" />
+                <ScalarProperty Name="q9" ColumnName="q9" />
+                <ScalarProperty Name="q8" ColumnName="q8" />
+                <ScalarProperty Name="q7" ColumnName="q7" />
+                <ScalarProperty Name="q6" ColumnName="q6" />
+                <ScalarProperty Name="q5" ColumnName="q5" />
+                <ScalarProperty Name="q4" ColumnName="q4" />
+                <ScalarProperty Name="q3" ColumnName="q3" />
+                <ScalarProperty Name="q2" ColumnName="q2" />
+                <ScalarProperty Name="q1" ColumnName="q1" />
+                <ScalarProperty Name="studyid" ColumnName="studyid" />
+                <ScalarProperty Name="adminid" ColumnName="adminid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

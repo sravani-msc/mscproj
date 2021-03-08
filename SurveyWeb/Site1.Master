@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="SurveyWeb.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    
+        <script>
+            $(function () {
+                $('input[type=submit]').addClass('btn btn-primary');
+                //$('input[type=text]').addClass('form-control form-inline');
+                //$('input[type=password]').addClass('form-control');
+                //$('input[type=text]').css('width', '25%');
+            });
+        </script>
+    
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<!-- <body style="background-image:url('someimage.gif')"> -->
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Survey Master</h1>
+            <!-- <h2>UK Dept Schools Survey</h2>  -->  
+        </div>
+    <form id="form1" runat="server">
+        <asp:Button ID="btnsignout" Text="signout" runat="server" OnClick="btnsignout_Click" CausesValidation="False" />
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+    </div>
+</body>
+</html>
+

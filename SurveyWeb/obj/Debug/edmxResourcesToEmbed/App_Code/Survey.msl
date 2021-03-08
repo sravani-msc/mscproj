@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SurveyModelStoreContainer" CdmEntityContainer="SurveyEntities">
+    <EntitySetMapping Name="SAUsers">
+      <EntityTypeMapping TypeName="SurveyModel.SAUser">
+        <MappingFragment StoreEntitySet="SAUsers">
+          <ScalarProperty Name="SAEmailid" ColumnName="SAEmailid" />
+          <ScalarProperty Name="SAPassword" ColumnName="SAPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCAnswerDetails">
+      <EntityTypeMapping TypeName="SurveyModel.SCAnswerDetail">
+        <MappingFragment StoreEntitySet="SCAnswerDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="sno" ColumnName="sno" />
+          <ScalarProperty Name="a1" ColumnName="a1" />
+          <ScalarProperty Name="a2" ColumnName="a2" />
+          <ScalarProperty Name="a3" ColumnName="a3" />
+          <ScalarProperty Name="a4" ColumnName="a4" />
+          <ScalarProperty Name="a5" ColumnName="a5" />
+          <ScalarProperty Name="a6" ColumnName="a6" />
+          <ScalarProperty Name="a7" ColumnName="a7" />
+          <ScalarProperty Name="a8" ColumnName="a8" />
+          <ScalarProperty Name="a9" ColumnName="a9" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCAnswers">
+      <EntityTypeMapping TypeName="SurveyModel.SCAnswer">
+        <MappingFragment StoreEntitySet="SCAnswers">
+          <ScalarProperty Name="SCEmailid" ColumnName="SCEmailid" />
+          <ScalarProperty Name="Scode" ColumnName="Scode" />
+          <ScalarProperty Name="SurveyDate" ColumnName="SurveyDate" />
+          <ScalarProperty Name="sno" ColumnName="sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCUsers">
+      <EntityTypeMapping TypeName="SurveyModel.SCUser">
+        <MappingFragment StoreEntitySet="SCUsers">
+          <ScalarProperty Name="SCEmailid" ColumnName="SCEmailid" />
+          <ScalarProperty Name="SCPassword" ColumnName="SCPassword" />
+          <ScalarProperty Name="SCode" ColumnName="SCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Studies">
+      <EntityTypeMapping TypeName="SurveyModel.Study">
+        <MappingFragment StoreEntitySet="Studies">
+          <ScalarProperty Name="SCode" ColumnName="SCode" />
+          <ScalarProperty Name="StudyName" ColumnName="StudyName" />
+          <ScalarProperty Name="NumStudents" ColumnName="NumStudents" />
+          <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+          <ScalarProperty Name="StudyType" ColumnName="StudyType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudyQuestions">
+      <EntityTypeMapping TypeName="SurveyModel.StudyQuestion">
+        <MappingFragment StoreEntitySet="StudyQuestions">
+          <ScalarProperty Name="Scode" ColumnName="Scode" />
+          <ScalarProperty Name="q1" ColumnName="q1" />
+          <ScalarProperty Name="q2" ColumnName="q2" />
+          <ScalarProperty Name="q3" ColumnName="q3" />
+          <ScalarProperty Name="q4" ColumnName="q4" />
+          <ScalarProperty Name="q5" ColumnName="q5" />
+          <ScalarProperty Name="q6" ColumnName="q6" />
+          <ScalarProperty Name="q7" ColumnName="q7" />
+          <ScalarProperty Name="q8" ColumnName="q8" />
+          <ScalarProperty Name="q9" ColumnName="q9" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

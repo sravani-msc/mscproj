@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{43675CF0-C097-483C-BCDE-6F822A20E595}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SurveyWeb</RootNamespace>
+    <AssemblyName>SurveyWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.EntityDataSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.EntityDataSource.6.0.0\lib\net40\Microsoft.AspNet.EntityDataSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Home.aspx" />
+    <Content Include="Models\Survey.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Survey.edmx</DependentUpon>
+      <LastGenOutput>Survey.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Survey.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Survey.edmx</DependentUpon>
+      <LastGenOutput>Survey.cs</LastGenOutput>
+    </Content>
+    <Content Include="packages.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="SAAddClients.aspx" />
+    <Content Include="SAChangePwd.aspx" />
+    <Content Include="SAConsentForm.aspx" />
+    <Content Include="SACreateStudy.aspx" />
+    <Content Include="SAOther.aspx" />
+    <Content Include="SACTHQ.aspx" />
+    <Content Include="SACTUQ.aspx" />
+    <Content Include="SARegister.aspx" />
+    <Content Include="SAShowStudy.aspx" />
+    <Content Include="SSDashboard.aspx" />
+    <Content Include="SSLogin.aspx" />
+    <Content Include="SCOther.aspx" />
+    <Content Include="SCCTUQ.aspx" />
+    <Content Include="SCCTHQ.aspx" />
+    <Content Include="SCCTEQ.aspx" />
+    <Content Include="SACTEQ.aspx" />
+    <Content Include="SADashboard.aspx" />
+    <Content Include="SAEditQuestionaire.aspx" />
+    <Content Include="SAViewStudy.aspx" />
+    <Content Include="SAEditStudy.aspx" />
+    <Content Include="SALogin.aspx" />
+    <Content Include="SCChangePwd.aspx" />
+    <Content Include="SCDashboard.aspx" />
+    <Content Include="SAEditStudyOptions.aspx" />
+    <Content Include="SCLogin.aspx" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="SCStartSurvey.aspx" />
+    <Content Include="Site1.Master" />
+    <Content Include="Anonymous.master" />
+    <Content Include="SurveyAdmin.master" />
+    <Content Include="SurveyClient.master" />
+    <EntityDeploy Include="Models\Survey.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Survey.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Survey.edmx.diagram">
+      <DependentUpon>Survey.edmx</DependentUpon>
+    </Content>
+    <Content Include="SurveySupervisor.master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Anonymous.master.cs">
+      <DependentUpon>Anonymous.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Anonymous.master.designer.cs">
+      <DependentUpon>Anonymous.master</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomSurvey.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SAUser.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SCAnswer.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SCAnswerDetail.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SCUser.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Study.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudyQuestion.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudySurvey.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudyType.cs">
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Survey.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Survey.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Survey.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Survey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Survey.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Survey.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SAAddClients.aspx.cs">
+      <DependentUpon>SAAddClients.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SAAddClients.aspx.designer.cs">
+      <DependentUpon>SAAddClients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SAChangePwd.aspx.cs">
+      <DependentUpon>SAChangePwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SAChangePwd.aspx.designer.cs">
+      <DependentUpon>SAChangePwd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SAConsentForm.aspx.cs">
+      <DependentUpon>SAConsentForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SAConsentForm.aspx.designer.cs">
+      <DependentUpon>SAConsentForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SACreateStudy.aspx.cs">
+      <DependentUpon>SACreateStudy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SACreateStudy.aspx.designer.cs">
+      <DependentUpon>SACreateStudy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SAOther.aspx.cs">
+      <DependentUpon>SAOther.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SAOther.aspx.designer.cs">
+      <DependentUpon>SAOther.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SACTHQ.aspx.cs">
+      <DependentUpon>SACTHQ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SACTHQ.aspx.designer.cs">
+      <DependentUpon>SACTHQ.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SACTUQ.aspx.cs">
+      <DependentUpon>SACTUQ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SACTUQ.aspx.designer.cs">
+      <DependentUpon>SACTUQ.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SARegister.aspx.cs">
+      <DependentUpon>SARegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SARegister.aspx.designer.cs">
+      <DependentUpon>SARegister.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SAShowStudy.aspx.cs">
+      <DependentUpon>SAShowStudy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SAShowStudy.aspx.designer.cs">
+      <DependentUpon>SAShowStudy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SSDashboard.aspx.cs">
+      <DependentUpon>SSDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SSDashboard.aspx.designer.cs">
+      <DependentUpon>SSDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SSLogin.aspx.cs">
+      <DependentUpon>SSLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SSLogin.aspx.designer.cs">
+      <DependentUpon>SSLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SCOther.aspx.cs">
+      <DependentUpon>SCOther.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SCOther.aspx.designer.cs">
+      <DependentUpon>SCOther.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SCCTUQ.aspx.cs">
+      <DependentUpon>SCCTUQ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SCCTUQ.aspx.designer.cs">
+      <DependentUpon>SCCTUQ.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SCCTHQ.aspx.cs">
+      <DependentUpon>SCCTHQ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SCCTHQ.aspx.designer.cs">
+      <DependentUpon>SCCTHQ.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SCCTEQ.aspx.cs">
+      <DependentUpon>SCCTEQ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SCCTEQ.aspx.designer.cs">
+      <DependentUpon>SCCTEQ.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SACTEQ.aspx.cs">
+      <DependentUpon>SACTEQ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SACTEQ.aspx.designer.cs">
+      <DependentUpon>SACTEQ.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SADashboard.aspx.cs">
+      <DependentUpon>SADashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SADashboard.aspx.designer.cs">
+      <DependentUpon>SADashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SAEditQuestionaire.aspx.cs">
+      <DependentUpon>SAEditQuestionaire.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SAEditQuestionaire.aspx.designer.cs">
+      <DependentUpon>SAEditQuestionaire.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SAViewStudy.aspx.cs">
+      <DependentUpon>SAViewStudy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SAViewStudy.aspx.designer.cs">
+      <DependentUpon>SAViewStudy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SAEditStudy.aspx.cs">
+      <DependentUpon>SAEditStudy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SAEditStudy.aspx.designer.cs">
+      <DependentUpon>SAEditStudy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SALogin.aspx.cs">
+      <DependentUpon>SALogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SALogin.aspx.designer.cs">
+      <DependentUpon>SALogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SCChangePwd.aspx.cs">
+      <DependentUpon>SCChangePwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SCChangePwd.aspx.designer.cs">
+      <DependentUpon>SCChangePwd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SCDashboard.aspx.cs">
+      <DependentUpon>SCDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SCDashboard.aspx.designer.cs">
+      <DependentUpon>SCDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SAEditStudyOptions.aspx.cs">
+      <DependentUpon>SAEditStudyOptions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SAEditStudyOptions.aspx.designer.cs">
+      <DependentUpon>SAEditStudyOptions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SCLogin.aspx.cs">
+      <DependentUpon>SCLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SCLogin.aspx.designer.cs">
+      <DependentUpon>SCLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SCStartSurvey.aspx.cs">
+      <DependentUpon>SCStartSurvey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SCStartSurvey.aspx.designer.cs">
+      <DependentUpon>SCStartSurvey.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site1.Master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site1.Master.designer.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SurveySupervisor.master.cs">
+      <DependentUpon>SurveySupervisor.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SurveySupervisor.master.designer.cs">
+      <DependentUpon>SurveySupervisor.master</DependentUpon>
+    </Compile>
+    <Compile Include="SurveyAdmin.master.cs">
+      <DependentUpon>SurveyAdmin.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SurveyAdmin.master.designer.cs">
+      <DependentUpon>SurveyAdmin.master</DependentUpon>
+    </Compile>
+    <Compile Include="SurveyClient.master.cs">
+      <DependentUpon>SurveyClient.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SurveyClient.master.designer.cs">
+      <DependentUpon>SurveyClient.master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Code\" />
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51708</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51708/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
